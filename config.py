@@ -12,8 +12,8 @@ class Config:
     BLOGGING_MAIL_SENDER = os.environ.get('MAIL_SENDER')
     BLOGGING_ADMIN =  os.environ.get('MAIL_ADMIN')
     BLOGGING_MAIL_SUBJECT_PREFIX = "[Blogging]"
-    BLOGGING_POSTS_PER_PAGE = 10
-    BLOGGING_COMMENTS_PER_PAGE = 10
+    BLOGGING_POSTS_PER_PAGE = 5
+    BLOGGING_COMMENTS_PER_PAGE = 5
 
     @staticmethod
     def init_app(app):

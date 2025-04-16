@@ -6,10 +6,15 @@
 {% block page_content %}
 <div class="container">
     <div class="row">
-        <div id="profile" class="col-md-3 hidden-sm hidden-xs">
+        <div class="col-md-3 hidden-sm hidden-xs" style="padding-top: 20px; padding-left: 0;">
             {% if current_user.can(Permission.WRITE) %}
             <div>
-              {{ wtf.quick_form(form) }}
+                {{ wtf.quick_form(form) }}
+            </div>
+            {% else %}
+            <div class="alert alert-info">
+                <p>You don't have permission to create posts.</p>
+                <p><a href="{{ url_for('main.moderate') }}">Learn more about contributing</a>.</p>
             </div>
             {% endif %}
         </div>
@@ -25,10 +30,12 @@
             </div>
         </div>
         <div id="right-content" class="col-md-3">
-            <h1>Hello world this is nathan</h1>
-            <h1>Hello world this is nathan</h1>
-            <h1>Hello world this is nathan</h1>
-            <h1>Hello world this is nathan</h1>
+            <h3>Recent Posts</h3>
+            <ul>
+                {% for post in recent_posts %}
+                <li><a href="{{ url_for('post', id=post.id) }}">{{ post.title }}</a></li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 </div>

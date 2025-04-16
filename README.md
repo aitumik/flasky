@@ -10,17 +10,22 @@ If you have a linux distro then you would setup this project by following the be
 
 1. Clone the repository to your local machine
 ```sh
-$ git clone https://github.com/aitumik/Flasky
+$ git clone https://github.com/aitumik/flasky
 ```
 
 2. Change the working directory to the cloned application
 ```bash
-cd Flasky
+cd flasky
 ```
 
 3. Install all the requirements
 ```bash
 pip3 install -r requirements.txt
+```
+
+Or with docker
+```bash
+sudo docker-compose up -d
 ```
 
 ## Export the environment variables

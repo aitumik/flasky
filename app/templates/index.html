@@ -6,7 +6,7 @@
 {% block page_content %}
 <div class="container">
     <div class="row">
-        <div class="col-md-3 hidden-sm hidden-xs" style="padding-top: 20px; padding-left: 0;">
+        <div class="col-md-3 col-sm-12 col-xs-12" style="padding-top: 20px; padding-left: 0;">
             {% if current_user.can(Permission.WRITE) %}
             <div>
                 {{ wtf.quick_form(form) }}

@@ -1,9 +1,13 @@
 # Stage 1: Build stage
 FROM python:3.10-slim AS builder
 
-
 # Set the working directory
 WORKDIR /app
+
+# Install runtime dependencies (minimal!)
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
+ && rm -rf /var/lib/apt/lists/*
 
 # Install and cache dependencies
 COPY requirements.txt /app/
@@ -14,6 +18,10 @@ FROM python:3.10-slim
 
 # Set the working directory
 WORKDIR /app
+
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
+ && rm -rf /var/lib/apt/lists/*
 
 # Copy only the needed wheels from the builder stage
 COPY --from=builder /app/wheels /wheels

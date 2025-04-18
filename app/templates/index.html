@@ -29,8 +29,8 @@
             </div>
         </div>
         <div id="right-content" class="col-sm-12 col-md-3">
+            {% if current_user.is_authenticated %}
             <div>
-
                 <h4 style="font-weight: bold;">Accounts to Follow</h4>
                 {% if users %}
                 <ul class="list-unstyled">
@@ -62,6 +62,7 @@
                 <p>No users to suggest right now.</p>
                 {% endif %}
             </div>
+            {% endif %}
             <!-- <h3>Recent Posts</h3>
             {% if recent_posts %}
             <ul>

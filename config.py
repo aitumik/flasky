@@ -12,7 +12,7 @@ class Config:
     BLOGGING_MAIL_SENDER = "nathanpykimutai@gmail.com" 
     BLOGGING_ADMIN =  os.environ.get('MAIL_ADMIN')
     BLOGGING_MAIL_SUBJECT_PREFIX = "[Flasky]"
-    BLOGGING_POSTS_PER_PAGE = 5
+    BLOGGING_POSTS_PER_PAGE = 10
     BLOGGING_COMMENTS_PER_PAGE = 5
 
     @staticmethod

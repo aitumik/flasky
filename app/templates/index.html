@@ -18,24 +18,61 @@
             </div>
             {% endif %}
         </div>
-        <div id="main" class="col-sm-12 col-md-6">
+        <div id="main" class="col-md-6">
             <div class="container-fluid">
                 {% include '_posts.html' %}
                 <div>
                     <div style="text-align: center;">
                         {{ macros.pagination_widget(pagination, '.home') }}
-                        {% endblock %}
                     </div>
                 </div>
             </div>
         </div>
-        <div id="right-content" class="col-md-3">
-            <h3>Recent Posts</h3>
+        <div id="right-content" class="col-sm-12 col-md-3">
+            <div>
+
+                <h4 style="font-weight: bold;">Accounts to Follow</h4>
+                {% if users %}
+                <ul class="list-unstyled">
+                    {% for user in users %}
+                    <li class="mb-4 account_follow">
+
+                        <div class="account_profile">
+                            <a href="{{ url_for('.user', username=user.username) }}">
+                                <img src="{{ user.gravatar(40) }}" class="feed-avatar img-circle" alt="user image"
+                                    style="width: 40px; height: 40px;">
+                            </a>
+                            <strong><a href="{{ url_for('.user', username=user.username) }}">{{ user.username
+                                    }}</a></strong><br>
+
+                        </div>
+
+                        <div>
+                            {% if not current_user.is_following(user) %}
+                            <a href="{{ url_for('main.follow', username=user.username) }}"
+                                class="btn btn-sm btn-outline-primary mt-1">Follow</a>
+                            {% else %}
+                            <small class="text-muted">Following</small>
+                            {% endif %}
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>No users to suggest right now.</p>
+                {% endif %}
+            </div>
+            <!-- <h3>Recent Posts</h3>
+            {% if recent_posts %}
             <ul>
                 {% for post in recent_posts %}
                 <li><a href="{{ url_for('post', id=post.id) }}">{{ post.title }}</a></li>
                 {% endfor %}
             </ul>
+            {% else %}
+            <p>No recent posts available.</p>
+            {% endif %} -->
         </div>
     </div>
 </div>
+{% endblock %}

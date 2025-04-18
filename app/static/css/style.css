@@ -253,7 +253,13 @@ ul#feed a {
 }
 
 .account_follow {
+    padding-right: 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+
+.media-list {
+    padding: 2rem 2rem;
 }

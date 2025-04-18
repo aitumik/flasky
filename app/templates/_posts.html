@@ -50,6 +50,8 @@
             <img src="{{ post.author.gravatar(256) }}" class="feed-avatar img-circle" alt="user image">
         </a>
         <div class="feed-post">
+            <div>
+
             <h5>{{post.author.name}} <small>@{{post.author.username }} -
                     {{moment(post.timestamp).format('LLL')}}</small></h5>
             {% if post.body_html %}
@@ -57,32 +59,34 @@
             {% else %}
             <p>{{post.body}}</p>
             {% endif %}
-        </div>
-
-        <div class="action-list">
-            <a href="{{ url_for('.post', id=post.id) }}">
-                <span class="label label-default">Permalink</span>
-            </a>
-            <a href="{{ url_for('.post', id=post.id) }}#comments">
-                <span class="label label-primary">{{ post.comments.count() }} Comments </span>
-            </a>
-
-            <div>
-                {% if current_user == post.author %}
-                <a href="{{ url_for('.edit', id=post.id) }}">
-                    <span class="label label-primary">Edit</span>
-                </a>
-                {% endif %}
             </div>
 
-            <div>
-                {% if current_user.is_administrator() %}
-                <a href="{{ url_for('.edit', id=post.id) }}">
-                    <span class="btn btn-danger btn-xs">Edit [Admin]</span>
+            <div class="action-list">
+                <a href="{{ url_for('.post', id=post.id) }}">
+                    <span class="label label-default">Permalink</span>
                 </a>
-                {% endif %}
+                <a href="{{ url_for('.post', id=post.id) }}#comments">
+                    <span class="label label-primary">{{ post.comments.count() }} Comments </span>
+                </a>
+
+                <div>
+                    {% if current_user == post.author %}
+                    <a href="{{ url_for('.edit', id=post.id) }}">
+                        <span class="label label-primary">Edit</span>
+                    </a>
+                    {% endif %}
+                </div>
+
+                <div>
+                    {% if current_user.is_administrator() %}
+                    <a href="{{ url_for('.edit', id=post.id) }}">
+                        <span class="btn btn-danger btn-xs">Edit [Admin]</span>
+                    </a>
+                    {% endif %}
+                </div>
             </div>
         </div>
+
     </li>
     {% endfor %}
 </ul>

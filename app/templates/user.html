@@ -57,8 +57,10 @@ user.is_following(current_user) %}
             <a href="{{url_for('main.edit_profile')}}" class="btn btn-default">Edit profile</a>
             {% endif %}
         </div>
-        <h3>Posts by {{user.username}}</h3>
-        {% include '_posts.html' %}
+        <div class="col-md-12">
+            <h3>Posts by {{user.username}}</h3>
+            {% include '_posts.html' %}
+        </div>
     </div>
 </div>
 

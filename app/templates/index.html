@@ -42,8 +42,10 @@
                                 <img src="{{ user.gravatar(40) }}" class="feed-avatar img-circle" alt="user image"
                                     style="width: 40px; height: 40px;">
                             </a>
-                            <strong><a href="{{ url_for('.user', username=user.username) }}">{{ user.username
-                                    }}</a></strong><br>
+                            <strong>
+                                <a href="{{ url_for('.user', username=user.username) }}">{{ user.username }}</a>
+                            </strong>
+                            </br>
 
                         </div>
 

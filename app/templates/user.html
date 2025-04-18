@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %} Flasky -Page Not Found {% endblock %}
+{% block title %} Flasky - User Profile Page {% endblock %}
 {% import 'bootstrap/wtf.html' as html %}
 
 {% block page_content %}
@@ -14,7 +14,7 @@
             <p>
                 {% if user.name %}{{ user.name }}{% endif %}
                 {% if user.location %}
-                From <a href="https://maps.google.com/?q={{user.location }}">{{user.location}}</a>
+                    From <a href="https://maps.google.com/?q={{user.location }}">{{user.location}}</a> 
                 {% endif %}
 
             </p>
@@ -28,10 +28,10 @@
             {% endif %}
             {% endif %}
             <a href="{{ url_for('.followers', username=user.username) }}">
-                Followers: <span class="badge">{{ user.followers.count() }}</span>
+                Followers <span class="badge">{{ user.followers.count() }}</span>
             </a>
             <a href="{{ url_for('main.followed_by', username=user.username) }}">
-                Following: <span class="badge">{{ user.followed.count() }}</span>
+                Following <span class="badge">{{ user.followed.count() }} </span>
             </a>
             {% if current_user.is_authenticated and user != current_user and
 user.is_following(current_user) %}
@@ -44,12 +44,12 @@ user.is_following(current_user) %}
             {% endif %}
 
             {% if user.about_me %}
-            <p>{{user.about_me }}</p>
+            <p style="padding-top: 0.5rem;">{{user.about_me }}</p>
             {% endif %}
 
             <p>
-                Member since {{ user.member_since }}.<br>
-                Last seen {{ user.last_seen }}.
+                Member since {{ moment(user.member_since).format('LL') }}.<br>
+                Last seen {{ moment(user.last_seen).fromNow() }}.
             </p>
 
 

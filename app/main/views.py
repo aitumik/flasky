@@ -23,8 +23,7 @@ def home():
     pagination = Post.query.order_by(Post.timestamp.desc()).paginate(
         page, per_page=current_app.config['BLOGGING_POSTS_PER_PAGE'], error_out=False)
     posts = pagination.items
-    users = User.query.all()[:10]
-    # posts = Post.query.order_by(Post.timestamp.desc()).all()
+    users = User.query.all()[:5]
     return render_template('index.html', form=form, posts=posts, \
             pagination=pagination,users=users)
 

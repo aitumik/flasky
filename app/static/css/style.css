@@ -10,6 +10,7 @@ htm,body {
     padding: 20px 0;
 }
 
+
 #mainNav {
     border-radius: 0;
 }
@@ -150,8 +151,9 @@ ul#feed .feed-post h5 > small {
 }
 
 ul#feed .action-list {
-    margin-left: 13%;
-    padding-left: 1em;
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
 }
 
 ul#feed .action-list a {
@@ -161,11 +163,6 @@ ul#feed .action-list a {
 
 ul#feed .action-list a:hover {
     text-decoration: none;
-}
-
-ul#feed .action-list .retweet-count {
-    padding-left: 0.2em;
-    font-weight: bold;
 }
 
 ul#feed a {
@@ -244,4 +241,19 @@ ul#feed a {
     #footer .col-sm-12 {
         text-align: center;
     }
+}
+
+
+.account_profile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    align-items: start;
+    padding: 0.75rem 0;
+}
+
+.account_follow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

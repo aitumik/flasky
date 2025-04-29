@@ -1,0 +1,13 @@
+Dear {{ user.username }},
+
+You have a new comment on your post!
+
+To view the comment, click the link below:
+
+{{ url_for('main.post', id=post.id, _external=True) }}
+
+Sincerely,  
+The Flasky Team
+
+Note: Replies to this email address are not monitored.
+

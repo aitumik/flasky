@@ -7,6 +7,7 @@ from .forms import NameForm, EditProfileForm, PostForm, CommentForm
 from ..import db
 from ..models import User, Permission, Post, Comment,User
 from ..decorators import admin_required, permission_required
+from ..email import send_email
 
 
 @main.route("/", methods=['GET', 'POST'])
@@ -51,6 +52,10 @@ def post(id):
         comment = Comment(body=form.body.data, post=post,
                           author=current_user._get_current_object())
         db.session.add(comment)
+        # todo : send email to the owner of the post that they have received 
+        #        a comment, the template will have the post and the comment
+        #        
+        send_email(post.author.email,"You have a new comment","auth/email/comment",comment=comment,post=post,user=post.author)
         flash("Your comment has been submitted")
         return redirect(url_for('.post', id=post.id, page=-1))
     page = request.args.get('page', 1, type=int)

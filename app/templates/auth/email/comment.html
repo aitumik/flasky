@@ -1,0 +1,50 @@
+<html>
+  <div class="container">
+    <h3>Dear {{ user.username }},</h3>
+
+    <p>You have a new comment on your post!</p>
+
+    <p>To view the comment, click the button below:</p>
+
+    <p>
+      <a href="{{ url_for('main.post',id=post.id, _external=True) }}">
+        <button class="view-comment">View Comment</button>
+      </a>
+    </p>
+
+    <p>If the button doesn't work, you can also use this link:</p>
+    <p>
+      {{ url_for('main.post',id=post.id, _external=True) }}
+    </p>
+
+    <p>Sincerely,</p>
+
+    <p>The Flasky Team</p>
+
+    <p><small>Note: Replies to this email address are not monitored.</small></p>
+  </div>
+
+  <style>
+    .container {
+      width: 80%;
+      margin: auto;
+      font-family: Arial, sans-serif;
+    }
+
+    .view-comment {
+      background-color: #0066cc;
+      border: none;
+      color: white;
+      text-transform: uppercase;
+      padding: 12px 24px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      margin: 4px 2px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+  </style>
+</html>
+
